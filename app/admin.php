@@ -1,5 +1,5 @@
 <?php
-namespace Mcommerce\app;
+namespace Mcommerce\App;
 
 use Mcommerce\Base;
 use Mcommerce\Helper;

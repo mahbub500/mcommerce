@@ -1,5 +1,5 @@
 <?php
-namespace Mcommerce\app;
+namespace Mcommerce\App;
 
 use Mcommerce\Base;
 use Mcommerce\Helper;
@@ -40,4 +40,8 @@ class Front extends Base {
 		$this->version	= $this->plugin['Version'];
 
 	}
+
+    public function head(){
+        Helper::pri( 'test' );
+    }
 }
