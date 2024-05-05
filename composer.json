@@ -1,0 +1,15 @@
+{
+    "authors": [
+        {
+            "name": "Mahbub",
+            "email": "mahbubme500@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mcommerce\\" : "classes/",
+            "Mcommerce\\App\\" : "app/"
+        },
+        "files": []
+    }
+}
