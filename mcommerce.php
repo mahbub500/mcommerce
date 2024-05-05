@@ -61,12 +61,44 @@ final class Plugin {
 		/**
 		 * Defines constants
 		 */
-		// $this->define();
+		$this->define();
 
 		/**
 		 * Runs actual hooks
 		 */
 		// $this->hook();
+	}
+
+    /**
+	 * Define variables and constants
+	 * 
+	 * @access private
+	 * 
+	 * @uses get_plugin_data
+	 * @uses plugin_basename
+	 */
+	private function define() {
+
+		/**
+		 * Define some constants
+		 * 
+		 * @since 0.9
+		 */
+		define( 'MCOMMERCE', __FILE__ );
+		define( 'MCOMMERCE_DIR', dirname( MCOMMERCE ) );
+		define( 'MCOMMERCE_ASSETS', plugins_url( 'assets', MCOMMERCE ) );
+		define( 'MCOMMERCE_DEBUG', apply_filters( 'mcommerce_debug', true ) );
+
+		/**
+		 * The plugin data
+		 * 
+		 * @since 0.9
+		 * @var $plugin
+		 */
+		$this->plugin					= get_plugin_data( MCOMMERCE );
+		$this->plugin['basename']		= plugin_basename( MCOMMERCE );
+		$this->plugin['file']			= MCOMMERCE;
+
 	}
 
 	/**
