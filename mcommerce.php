@@ -33,7 +33,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author MCommerce mahbub.dev
  */
 final class Plugin {
+   
     public $plugin;
+
+	public $slug;
+
+	public $name;
+
+	public $server;
+	
+	public $version;
 	
 	/**
 	 * Plugin instance
@@ -62,7 +71,7 @@ final class Plugin {
 		/**
 		 * Defines constants
 		 */
-		// $this->define();
+		$this->define();
 
 		/**
 		 * Runs actual hooks
@@ -261,3 +270,5 @@ final class Plugin {
 		return self::$_instance;
 	}
 }
+
+Plugin::instance();

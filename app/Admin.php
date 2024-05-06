@@ -23,8 +23,6 @@ class Admin extends Base {
 	public $slug;
 
 	public $name;
-
-	public $server;
 	
 	public $version;
 	
