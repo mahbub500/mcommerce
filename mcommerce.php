@@ -19,6 +19,7 @@
 
 namespace Mcommerce;
 use Mcommerce\App\Front;
+use Mcommerce\App\Admin;
 
 /**
  * if accessed directly, exit.
@@ -145,8 +146,8 @@ final class Plugin {
 			/**
 			 * Admin facing hooks
 			 */
-			// $admin = new App\Admin( $this->plugin );
-			// $admin->activate( 'install' );
+			$admin = new Admin( $this->plugin );
+			$admin->activate( 'install' );
 			// $admin->action( 'admin_footer', 'upgrade' );
 			// $admin->action( 'admin_footer', 'modal' );
 			// $admin->action( 'plugins_loaded', 'i18n' );
