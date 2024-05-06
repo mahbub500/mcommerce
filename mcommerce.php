@@ -14,9 +14,6 @@
  * @package MCommerce
  */
 
-
-
-
 namespace Mcommerce;
 use Mcommerce\App\Front;
 use Mcommerce\App\Admin;

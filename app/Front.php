@@ -42,7 +42,7 @@ class Front extends Base {
 	}
 
     public function head(){
-        // Helper::pri( 'test' );
+        Helper::pri( $this->plugin['file'] );
     }
 
     /**
