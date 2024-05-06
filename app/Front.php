@@ -24,7 +24,6 @@ class Front extends Base {
 
 	public $name;
 
-	public $server;
 	
 	public $version;
 	
@@ -36,7 +35,6 @@ class Front extends Base {
 		$this->plugin	= $plugin;
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
-		$this->server	= $this->plugin['server'];
 		$this->version	= $this->plugin['Version'];
 
 	}
