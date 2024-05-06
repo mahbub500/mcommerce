@@ -199,11 +199,9 @@ final class Plugin {
 			 * Front facing hooks
 			 */
 			$front = new Front( $this->plugin );
-			// $front->action( 'wp_footer', 'modal' );
 			$front->action( 'wp_head', 'head' );
-			// $front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
-			// $front->action( 'after_setup_theme', 'setup' );
-			// $front->action( 'admin_bar_menu', 'add_admin_bar', 70 );
+			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+			
 		
 
 		endif;
