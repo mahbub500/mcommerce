@@ -42,7 +42,7 @@ class Helper {
 	/**
 	 * Includes a template file resides in /views directory
 	 *
-	 * It'll look into /codesigner directory of your active theme
+	 * It'll look into /mcommerce directory of your active theme
 	 * first. if not found, default template will be used.
 	 * can be overwritten with codesigner_template_overwrite_dir hook
 	 *
