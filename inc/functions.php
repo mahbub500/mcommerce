@@ -17,3 +17,14 @@ function mcommerce_site_url() {
 	return $url;
 }
 endif;
+
+/**
+ * Database table prefix
+ * 
+ * @return string
+ */
+if( ! function_exists( 'mcommerce_db_prefix' ) ) :
+	function mcommerce_db_prefix() {
+		return 'mc_';
+	}
+endif;

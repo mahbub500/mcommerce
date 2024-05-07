@@ -3,6 +3,7 @@ namespace Mcommerce\App;
 
 use Mcommerce\Base;
 use Mcommerce\Helper;
+use Mcommerce\Abstracts\DB;
 
 /**
  * if accessed directly, exit.
@@ -35,36 +36,10 @@ class Admin extends Base {
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
 		$this->version	= $this->plugin['Version'];
-
-
-		
-
-
+		$this->database = new DB();
 	}
 
 	public function install() {
-
-		/**
-		 * Create database tables
-		 */
-		global $wpdb;
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-		/**
-		 * product table
-		 */
-		$product_table = "CREATE TABLE `{$wpdb->prefix}mc_product` (
-		    id int(11) NOT NULL AUTO_INCREMENT,
-		    name varchar(255) NOT NULL,
-		    description varchar(255) NOT NULL,
-		    price int(11) NOT NULL,
-		    quantity int(11) NOT NULL,
-		    image varchar(255) NULL,
-		    created_by int(11) NOT NULL,
-		    time int(10) NOT NULL,
-		    UNIQUE KEY id (id)
-		);";
-
-		dbDelta( $product_table );
+		$this->database->create_tables();
 	}
 }
