@@ -17,6 +17,7 @@
 namespace Mcommerce;
 use Mcommerce\App\Front;
 use Mcommerce\App\Admin;
+use Mcommerce\App\Settings;
 
 /**
  * if accessed directly, exit.
@@ -165,8 +166,8 @@ final class Plugin {
 			/**
 			 * Settings related hooks
 			 */
-			// $settings = new App\Settings( $this->plugin );
-			// $settings->action( 'plugins_loaded', 'init_menu', 11 );
+			$settings = new Settings( $this->plugin );
+			$settings->action( 'init', 'register_post_type', 11 );
 			// $settings->action( 'cx-settings-saved', 'reset',10, 2 );
 			// $settings->action( "{$this->plugin['TextDomain']}_upgraded", 'migrate_settings', 10, 2 );
 
