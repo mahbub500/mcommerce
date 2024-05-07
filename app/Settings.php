@@ -70,7 +70,6 @@ class Settings extends Base {
 			'taxonomies'			=> array(),
 			'public'				=> false,
 			'show_ui'				=> true,
-			// 'show_in_menu'			=> 'coschool',
 			'show_in_admin_bar'		=> true,
 			'menu_position'			=> null,
 			'menu_icon'				=> null,
