@@ -44,23 +44,22 @@ class Post_Type  {
 			'labels'				=> $labels,
 			'hierarchical'			=> false,
 			'description'			=> 'description',
-			'taxonomies'			=> array(),
-			'public'				=> false,
+			'taxonomies'			=> array( 'product-category' ),
+			'public'				=> true,
 			'show_ui'				=> true,
 			'show_in_admin_bar'		=> true,
-			'menu_position'			=> null,
-			'menu_icon'				=> null,
+			'menu_position'			=> 10,
 			'show_in_nav_menus'		=> true,
 			'publicly_queryable'  	=> true,
 			'exclude_from_search' 	=> true,
-			'has_archive'			=> false,
 			'query_var'				=> true,
 			'can_export'			=> true,
 			'capability_type'		=> 'post',
-			'supports'				=> array( 'title', 'editor', 'thumbnail' ),
+			'rewrite'             => array( 'slug' => 'product', 'with_front' => true ),
+			'supports'				=> array( 'title', 'editor', 'thumbnail', 'author' ),
 		);
 	
-		register_post_type( 'mc_product', $args );
+		register_post_type( 'product', $args );
     }
 
 
@@ -100,7 +99,7 @@ class Post_Type  {
 		switch ( $column ) {		    
 
 		    case 'price' :
-		        echo false === ( $price = $product_data->get( 'price' ) ) ? esc_html__( 'Free', 'coschool' ) : coschool_price( $price );
+		        echo false === ( $price = $product_data->get( 'price' ) ) ? esc_html__( 'Free', 'mcommerce' ) : coschool_price( $price );
 		        break;
 		}
 	}

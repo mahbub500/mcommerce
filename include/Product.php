@@ -33,7 +33,7 @@ class Product {
 	 * Constructor function
 	 */
 	public function __construct() {
-		$post_type = 'mc_product';
+		$post_type = 'product';
 		add_action( 'init', [ new Product\Post_Type, 'register_post_type' ] );
 		add_action( 'manage_'. $post_type .'_posts_columns', [ new Product\Post_Type, 'add_table_columns' ] );
 
@@ -44,7 +44,7 @@ class Product {
 
 		add_action( 'init', [ new Product\Taxonomy, 'register' ] );
 
-		// add_action( 'add_meta_boxes', [ new Course\Meta, 'content' ], 11 );
+		add_action( 'add_meta_boxes', [ new Product\Meta, 'content' ], 11 );
 		add_action( 'save_post_'. $post_type , [ new Product\Meta, 'save' ], 10, 2 );
 
 

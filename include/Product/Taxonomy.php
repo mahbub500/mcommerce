@@ -34,7 +34,7 @@ class Taxonomy {
 		$category_args = array(
 			'labels'            => $category_labels,
 			'public'            => true,
-			'show_in_nav_menus' => true,
+			'show_in_nav_menus' => false,
 			'show_admin_column' => true,
 			'hierarchical'      => true,
 			'show_tagcloud'     => true,
@@ -45,7 +45,7 @@ class Taxonomy {
 			'capabilities'      => array(),
 		);
 	
-		register_taxonomy( 'product-category', array( 'mc_product' ), $category_args );	
+		register_taxonomy( 'product-category', array( 'product' ), $category_args );	
 		
 	}
 }
