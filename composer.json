@@ -9,7 +9,9 @@
         "psr-4": {
             "Mcommerce\\" : "classes/",
             "Mcommerce\\App\\" : "app/",
-            "Mcommerce\\Abstracts\\" : "Abstracts/"
+            "Mcommerce\\Abstracts\\" : "Abstracts/",
+            "Mcommerce\\Include\\App\\" : "Include/",
+            "Mcommerce\\Include\\App\\Product\\" : "Include/Product"
         },
         "files": []
     }

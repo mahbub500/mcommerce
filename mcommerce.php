@@ -17,8 +17,10 @@
 namespace Mcommerce;
 use Mcommerce\App\Front;
 use Mcommerce\App\Admin;
+use Mcommerce\App\App;
 use Mcommerce\App\Settings;
 
+use Mcommerce\Include;
 /**
  * if accessed directly, exit.
  */
@@ -204,6 +206,15 @@ final class Plugin {
 		
 
 		endif;
+
+		/**
+		 * The App loader
+		 * 
+		 * Loads actual app
+		 */
+		$app = new App( $this->plugin );
+		$app->action( 'plugins_loaded', 'load' );
+
 		
 		/**
 		 * Modules related hooks
