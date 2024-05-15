@@ -1,9 +1,9 @@
 <?php
 namespace Mcommerce\Include\App\Product;
 
-use Mcommerce\Base;
 use Mcommerce\Helper;
 use Mcommerce\Abstracts\DB;
+use Mcommerce\Abstracts\Post_Data;
 
 /**
  * if accessed directly, exit.
@@ -17,11 +17,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Admin
  * @author Mahbub <mahbub.dev>
  */
-class Data {
+class Data extends Post_Data {
+
+    /**
+	 * @var obj
+	 */
+	public $product;
+
+    /**
+	 * Constructor function
+	 * 
+	 * @param int|obj $product the product
+	 */
+	public function __construct( $product ) {
+		$this->product = get_post( $product );
+		parent::__construct( $this->course );
+	}
 
 
-    public function show_schema(){
-        Helper::pri( 'test' );
-    }
 
 }
