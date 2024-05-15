@@ -1,11 +1,7 @@
 <?php
 namespace Mcommerce\Include\App;
-// use Mcommerce\Include\App;
-// use Mcommerce\Include\App\;
 
-use Mcommerce\Base;
 use Mcommerce\Helper;
-use Mcommerce\Abstracts\DB;
 
 /**
  * if accessed directly, exit.
@@ -36,6 +32,7 @@ class Product {
 	 * Constructor function
 	 */
 	public function __construct() {
+		add_action( 'init', [ new Product\Post_Type, 'register_post_type' ] );
 		add_action( 'wp_head', [ new Product\Data, 'show_schema' ] );
 	}
 

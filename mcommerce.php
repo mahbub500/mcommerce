@@ -169,7 +169,7 @@ final class Plugin {
 			 * Settings related hooks
 			 */
 			$settings = new Settings( $this->plugin );
-			$settings->action( 'init', 'register_post_type', 11 );
+			// $settings->action( 'init', 'register_post_type', 11 );
 			// $settings->action( 'cx-settings-saved', 'reset',10, 2 );
 			// $settings->action( "{$this->plugin['TextDomain']}_upgraded", 'migrate_settings', 10, 2 );
 

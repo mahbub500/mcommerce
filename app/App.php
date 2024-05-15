@@ -3,7 +3,6 @@ namespace Mcommerce\App;
 
 use Mcommerce\Base;
 use Mcommerce\Helper;
-use Mcommerce\Abstracts\DB;
 
 /**
  * if accessed directly, exit.
