@@ -8,7 +8,6 @@ global $post;
     $product_price 	= $product_data->get( 'mc_product_price' );
 
     ?>
-
     <div class="contaner">
         <div class="row">
             <div class="col-md-2">
@@ -18,8 +17,6 @@ global $post;
             </div> 
             </div>
         </div>
-    </div>
-    
-    
+    </div>    
     <?php 
 ?>
