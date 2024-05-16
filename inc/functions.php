@@ -28,3 +28,40 @@ if( ! function_exists( 'mcommerce_db_prefix' ) ) :
 		return 'mc_';
 	}
 endif;
+
+/**
+ * Publish Course Issue
+ * 
+ * @author Sadekur Rahman <shadekur.rahman60@gmail.com>
+ * 
+ * @return input string|int
+ */
+
+ if( ! function_exists( 'mcommerce_sanitize' ) ) :
+	function mcommerce_sanitize( $input, $type = 'text' ) {
+		if ( is_array($input) ) {
+			$sanitized = [];
+
+			foreach ( $input as $key => $value ) {
+				$sanitized[$key] = mcommerce_sanitize( $value, $type );
+			}
+
+			return $sanitized;
+		}
+
+		if ( ! in_array($type, ['textarea', 'email', 'file', 'class', 'key', 'title', 'user', 'option', 'meta']) ) {
+			$type = 'text';
+		}
+
+		if ( array_key_exists($type, $maps = ['text' => 'text_field', 'textarea' => 'textarea_field', 'file' => 'file_name', 'class' => 'html_class']) ) {
+			$type = $maps[$type];
+		}
+
+		if ( preg_match('/<[^>]*>/', $input) ) {
+			return wp_kses_post( $input );
+		} else {
+			$fn = "sanitize_{$type}";
+			return $fn( $input );
+		}
+	}
+endif;

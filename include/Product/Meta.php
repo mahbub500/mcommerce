@@ -34,10 +34,10 @@ class Meta {
 
         $product_id = $post->ID;
 
-        $prodcut_price  = get_post_meta( $product_id, 'wc_product_price', true );
+        $prodcut_price  = get_post_meta( $product_id, 'mc_product_price', true );
 
         echo '<label for="my_meta_box_field">Description for this field</label>';
-        echo '<input type="number" id="wc_product_price" name="wc_product_price" value="'.$prodcut_price.'" size="25" />';
+        echo '<input type="number" id="wc_product_price" name="mc_product_price" value="'.$prodcut_price.'" size="25" />';
 
 
         
@@ -45,11 +45,33 @@ class Meta {
 
     public function save( $product_id, $product ){
 
-        if(   isset( $_POST['wc_product_price'] )   ){
+        $course_data = new Data( $product_id );
 
-            update_post_meta( $product_id, 'wc_product_price', $_POST['wc_product_price']  );
+        // remove old meta from all content
+		global $wpdb;
+		
+		$wpdb->delete( $wpdb->postmeta, [ 'meta_key' => 'product_id', 'meta_value' => $product_id ] );
 
-        }
+        // update course contents
+		if( isset( $_POST['mc_product_price'] ) ) :
+			$new_contents	= $_POST['mc_product_price'];
+			$course_data->set( 'mc_product_price', mcommerce_sanitize( $new_contents, 'array' ) );
+
+			// update new meta to all content
+			if( ! empty( $new_contents ) ) :
+			foreach ( $new_contents as $chapter => $contents ) {
+				foreach ( $contents as $content_id ) {
+					update_post_meta( $content_id, 'product_id', $product_id ); // @TODO replace with `Data` object or an SQL query
+				}
+			}
+			endif;
+		endif;
+
+        // if(   isset( $_POST['mc_product_price'] )   ){
+
+        //     update_post_meta( $product_id, 'mc_product_price', $_POST['mc_product_price']  );
+
+        // }
 
     }
 
