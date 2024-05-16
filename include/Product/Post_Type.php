@@ -99,8 +99,22 @@ class Post_Type  {
 		switch ( $column ) {		    
 
 		    case 'price' :
-		        echo false === ( $price = $product_data->get( 'price' ) ) ? esc_html__( 'Free', 'mcommerce' ) : coschool_price( $price );
-		        break;
+		        echo false === ( $price = $product_data->get( 'mc_product_price' ) ) ? esc_html__( 'Free', 'mcommerce' ) : $price = $product_data->get( 'mc_product_price' );
+		    break;
+
+			case 'desc' :
+		        echo false === ( $product_content   = $product_data->product->post_content  ) ? esc_html__( '', 'mcommerce' ) : $product_content   = $product_data->product->post_content;
+		    break;
+			
+			case 'quantity' :
+		        echo false === ( $quantity = $product_data->get( 'mc_product_quantity' ) ) ? esc_html__( '0', 'mcommerce' ) : $product_data->get( 'mc_product_quantity' );
+		    break;
+			
+			case 'iamge' :
+				$post_image     = get_the_post_thumbnail_url( $product_data->post ) ;
+				echo '<img class="card-img-top img-thumbnail rounded" style=" height: 70px; width: 70px " src="' . $post_image .' " alt="Product Image image">';
+		       
+		    break;
 		}
 	}
 	

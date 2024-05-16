@@ -42,7 +42,8 @@ class Front extends Base {
 	}
 
     public function head(){
-        // Helper::pri( $this->plugin['file'] );
+	// $parent_slug = plugin_basename( 'product' );
+        // Helper::pri( $parent_slug );
     }
 
     /**

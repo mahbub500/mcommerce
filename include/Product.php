@@ -38,10 +38,8 @@ class Product {
 		add_action( 'manage_'. $post_type .'_posts_columns', [ new Product\Post_Type, 'add_table_columns' ] );
 
 		
-		// add_action( 'manage_product_posts_custom_column', [ new Course\Post_Type, 'add_column_content' ], 10, 2 );
-		// add_filter( 'post_updated_messages', [ new Course\Post_Type, 'course_updated_message' ] );
-		// add_filter( 'bulk_post_updated_messages', [ new Course\Post_Type, 'bulk_course_updated_message' ], 10, 2 );
-
+		add_action( 'manage_'. $post_type .'_posts_custom_column', [ new Product\Post_Type, 'add_column_content' ], 10, 2 );
+		
 		add_action( 'init', [ new Product\Taxonomy, 'register' ] );
 
 		add_action( 'add_meta_boxes', [ new Product\Meta, 'content' ], 11 );
