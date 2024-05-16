@@ -57,6 +57,21 @@ class Meta {
 			endif;
 		endif;
 
+		// update course contents
+		if( isset( $_POST['mc_product_quantity'] ) ) :
+			$new_contents	= $_POST['mc_product_quantity'];
+			$course_data->set( 'mc_product_quantity', mcommerce_sanitize( $new_contents, 'array' ) );
+
+			// update new meta to all content
+			if( ! empty( $new_contents ) ) :
+			foreach ( $new_contents as $chapter => $contents ) {
+				foreach ( $contents as $content_id ) {
+					update_post_meta( $content_id, 'product_id', $product_id ); // @TODO replace with `Data` object or an SQL query
+				}
+			}
+			endif;
+		endif;
+
     }
 
 }
