@@ -20,6 +20,7 @@ use Mcommerce\App\Admin;
 use Mcommerce\App\App;
 use Mcommerce\App\Settings;
 use Mcommerce\App\Common;
+use Mcommerce\App\Shortcode;
 
 use Mcommerce\Include;
 /**
@@ -205,6 +206,12 @@ final class Plugin {
 			$front = new Front( $this->plugin );
 			$front->action( 'wp_head', 'head' );
 			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+
+			/**
+			 * Short Code related hooks
+			 */
+			$shortcode = new Shortcode( $this->plugin );
+			$shortcode->register( 'mcommerce_products', 'products' );
 			
 		
 

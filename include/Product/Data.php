@@ -34,6 +34,19 @@ class Data extends Post_Data {
 		parent::__construct( $this->product );
 	}
 
+	/**
+	 * URL to purchase a product
+	 * 
+	 * @since 0.9
+	 * 
+	 * @return string the URL
+	 */
+	public function get_purchase_url() {
+		
+		$key		= 'cart';
+		// $key		= $this->get_type() == 'free' ? 'access' : 'enroll';
 
+		return $enroll_url = add_query_arg( $key, $this->get( 'id' ), trailingslashit( mcommerce_cart_page( true ) ) );
 
+	}
 }

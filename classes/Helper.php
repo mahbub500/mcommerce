@@ -36,9 +36,6 @@ class Helper {
 		}
 	}
 
-
-	
-
 	/**
 	 * Includes a template file resides in /views directory
 	 *
@@ -121,5 +118,50 @@ class Helper {
 		else {
 			return __( 'Template not found!', 'mcommerce' );
 		}
+	}
+
+	/**
+	 * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to wp_cache_delete() with the `save_post` hook
+	 */
+	public static function get_posts( $args = [], $show_heading = false, $show_cached = false, $details = false ) {
+
+		$defaults = [
+			'post_type'         => 'post',
+			'posts_per_page'    => -1,
+			'post_status'		=> 'publish'
+		];
+
+		$_args = wp_parse_args( $args, $defaults );
+
+		// use cache
+		if( true === $show_cached && ( $cached_posts = wp_cache_get( "mcommerce_{$_args['post_type']}", 'mcommerce' ) ) ) {
+			$posts = $cached_posts;
+		}
+
+		// don't use cache
+		else {
+			$queried = new \WP_Query( $_args );
+
+			// if the raw list is required
+			if ( $details ) {
+				wp_cache_add( "mcommerce_{$_args['post_type']}", $queried->posts, 'mcommerce', 3600 );
+				$posts = $queried->posts;	
+			}
+
+			// use a better formatted one
+			else {
+				$posts = [];
+				foreach( $queried->posts as $post ) :
+					$posts[ $post->ID ] = $post->post_title;
+				endforeach;
+			}
+			
+			// store in the cache
+			wp_cache_add( "mcommerce_{$_args['post_type']}", $posts, 'mcommerce', 3600 );
+		}
+
+		// $posts = $show_heading ? [ '' => sprintf( __( '- Choose a %s -', 'coschool' ), $_args['post_type'] ) ] + $posts : $posts;
+
+		return apply_filters( 'mcommerce_get_posts', $posts, $_args );
 	}
 }

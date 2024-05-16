@@ -1,4 +1,6 @@
 <?php
+
+use Mcommerce\Helper;
 if( ! function_exists( 'get_plugin_data' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
@@ -63,5 +65,25 @@ endif;
 			$fn = "sanitize_{$type}";
 			return $fn( $input );
 		}
+	}
+endif;
+
+/**
+ * Cart page
+ * 
+ * @param bool $url Either we need the URL or the page ID
+ * 
+ * @return string|int
+ */
+if( ! function_exists( 'mcommerce_cart_page' ) ) :
+	function mcommerce_cart_page( $url = false ) {
+		// $enroll = Helper::get_option( 'mcommerce_general', 'cart_page' );
+		$enroll = 'http://localhost:10018/enroll-page/';
+
+		if( $url ) {
+			return get_permalink( $enroll );
+		}
+
+		return $enroll;
 	}
 endif;
