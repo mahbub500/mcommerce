@@ -19,6 +19,7 @@ use Mcommerce\App\Front;
 use Mcommerce\App\Admin;
 use Mcommerce\App\App;
 use Mcommerce\App\Settings;
+use Mcommerce\App\Common;
 
 use Mcommerce\Include;
 /**
@@ -119,9 +120,10 @@ final class Plugin {
 		 * @since 0.9
 		 * @var $plugin
 		 */
-		$this->plugin					= get_plugin_data( MCOMMERCE );
-		$this->plugin['basename']		= plugin_basename( MCOMMERCE );
-		$this->plugin['file']			= MCOMMERCE;
+		$this->plugin				= get_plugin_data( MCOMMERCE );
+		$this->plugin['basename']	= plugin_basename( MCOMMERCE );
+		$this->plugin['assets']		= MCOMMERCE_ASSETS;
+		$this->plugin['file']		= MCOMMERCE;
 
 	}
     /**
@@ -148,6 +150,7 @@ final class Plugin {
 			 */
 			$admin = new Admin( $this->plugin );
 			$admin->activate( 'install' );
+			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 			// $admin->action( 'admin_footer', 'upgrade' );
 			// $admin->action( 'admin_footer', 'modal' );
 			// $admin->action( 'plugins_loaded', 'i18n' );
@@ -217,10 +220,10 @@ final class Plugin {
 
 		
 		/**
-		 * Modules related hooks
+		 * Common related hooks
 		 */
-		// $modules = new App\Modules( $this->plugin );
-		// $modules->action( 'plugins_loaded', 'init' );
+		$common = new Common( $this->plugin );
+		// $common->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
 		// /**
 		//  * The setup wizard

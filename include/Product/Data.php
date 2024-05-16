@@ -31,7 +31,7 @@ class Data extends Post_Data {
 	 */
 	public function __construct( $product ) {
 		$this->product = get_post( $product );
-		parent::__construct( $this->course );
+		parent::__construct( $this->product );
 	}
 
 

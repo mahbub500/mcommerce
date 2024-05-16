@@ -30,17 +30,7 @@ class Meta {
 	}
 
     public function callback_content( $post ){
-        // echo Helper::get_view( 'content', 'views/products' );
-
-        $product_id = $post->ID;
-
-        $prodcut_price  = get_post_meta( $product_id, 'mc_product_price', true );
-
-        echo '<label for="my_meta_box_field">Description for this field</label>';
-        echo '<input type="number" id="wc_product_price" name="mc_product_price" value="'.$prodcut_price.'" size="25" />';
-
-
-        
+        echo Helper::get_view( 'content', 'views/products' ); 
     }
 
     public function save( $product_id, $product ){
@@ -66,12 +56,6 @@ class Meta {
 			}
 			endif;
 		endif;
-
-        // if(   isset( $_POST['mc_product_price'] )   ){
-
-        //     update_post_meta( $product_id, 'mc_product_price', $_POST['mc_product_price']  );
-
-        // }
 
     }
 
