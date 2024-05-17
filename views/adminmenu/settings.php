@@ -11,7 +11,7 @@ $args = [
 ];
 
 $pages = Helper::get_posts( $args );
-$cart_page_id = get_option( 'mcommerce_page_id' );
+$cart_page_id = mcommerce_cart_page();
 
 // Helper::pri( $pages );
 ?>

@@ -43,4 +43,18 @@ class Shortcode extends Base {
         return Helper::get_view( 'products', 'views/shortcodes' );
     
     }
+
+	/**
+	 * Course enrollment form
+	 * 
+	 * @since 0.9
+	 */
+	public function cart() {
+		// // if native payment is not enabled, abort
+		// if( 'native' != coschool_payment_handler() && 'test-payment' != coschool_payment_handler()  ) {
+		// 	return __( 'Something went wrong!', 'coschool' );
+		// }
+
+		return Helper::get_view( 'cart', 'templates/shortcodes' );
+	}
 }

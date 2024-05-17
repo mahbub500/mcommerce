@@ -44,19 +44,20 @@ class Cart {
     public function loader() {
         
         // a product is being added to the cart
-        if( isset( $_GET['enroll'] ) && get_post_status( $product_id = coschool_sanitize( $_GET['enroll'] ) ) ) {
+        if( isset( $_GET['cart'] ) && get_post_status( $product_id = mcommerce_sanitize( $_GET['cart'] ) ) ) {
 
             $this->add_product( $product_id );
+            $cart_page_id = mcommerce_cart_page();
 
-            do_action( 'coschool-product_added_to_cart', $product_id );
+            do_action( 'mcommerce-product_added_to_cart', $product_id );
             
-            wp_safe_redirect( coschool_enroll_page( true ) );
+            wp_safe_redirect( get_permalink( $cart_page_id ) );
             exit();
         }
         
         
         // removing a product from the cart
-        if( isset( $_GET['delist'] ) && get_post_status( $product_id = coschool_sanitize( $_GET['delist'] ) ) ) {
+        if( isset( $_GET['delist'] ) && get_post_status( $product_id = mcommerce_sanitize( $_GET['delist'] ) ) ) {
 
             $this->remove_product( $cproduct_id );
 
@@ -82,5 +83,18 @@ class Cart {
         $cart[] = $product_id;
 
         setcookie(  $this->cart_key , serialize( array_unique( $cart ) ), time() + WEEK_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+    }
+
+    /**
+     * Gets the cart
+     * 
+     * @return [int] An array of IDs
+     */
+    public function get_contents() {
+        if( isset( $_COOKIE[ $this->cart_key ] ) ) {
+            return unserialize( stripslashes( mcommerce_sanitize( $_COOKIE[ $this->cart_key ] ) ) );
+        }
+
+        return false;
     }
 }

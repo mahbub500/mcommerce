@@ -78,12 +78,13 @@ endif;
 if( ! function_exists( 'mcommerce_cart_page' ) ) :
 	function mcommerce_cart_page( $url = false ) {
 		// $enroll = Helper::get_option( 'mcommerce_general', 'cart_page' );
-		$enroll = 'http://localhost:10018/enroll-page/';
+		$cart_page_id = get_option( 'mcommerce_page_id' );
+		// $enroll = 'http://localhost:10018/enroll-page/';
 
 		if( $url ) {
-			return get_permalink( $enroll );
+			return get_permalink( $cart_page_id );
 		}
 
-		return $enroll;
+		return $cart_page_id;
 	}
 endif;

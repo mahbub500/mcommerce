@@ -194,6 +194,7 @@ final class Plugin {
 			 */
 			$shortcode = new Shortcode( $this->plugin );
 			$shortcode->register( 'mcommerce_products', 'products' );
+			$shortcode->register( 'mcommerce_cart', 'cart' );
 			
 		
 
