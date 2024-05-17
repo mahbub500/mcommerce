@@ -11,7 +11,8 @@
             "Mcommerce\\App\\" : "app/",
             "Mcommerce\\Abstracts\\" : "Abstracts/",
             "Mcommerce\\Include\\App\\" : "Include/",
-            "Mcommerce\\Include\\App\\Product\\" : "Include/Product"
+            "Mcommerce\\Include\\App\\Product\\" : "Include/Product",
+            "Mcommerce\\Include\\App\\Payment\\" : "Include/Payment"
         },
         "files": []
     }

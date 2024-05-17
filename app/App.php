@@ -39,6 +39,7 @@ class App extends Base {
 		
 		$this->modules = [ 
 			__( 'Product', 'mcommerce' ), 
+			__( 'Payment', 'mcommerce' ), 
 			
 		];
 	}
