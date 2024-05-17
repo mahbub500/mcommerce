@@ -22,6 +22,7 @@ use Mcommerce\App\Settings;
 use Mcommerce\App\Common;
 use Mcommerce\App\Shortcode;
 use Mcommerce\App\Ajax;
+use Mcommerce\App\Template;
 
 use Mcommerce\Include;
 /**
@@ -214,6 +215,12 @@ final class Plugin {
 		 */
 		$common = new Common( $this->plugin );
 		// $common->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+		
+		/**
+		 * Template related hooks
+		 */
+		$template = new Template( $this->plugin );
+		$template->action( 'mcommerce_cart', 'cart' );
 
 		
 

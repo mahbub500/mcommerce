@@ -9,7 +9,7 @@ else {
 	// echo '<div class="coschool-payment-wrapper">';
 	echo '<h2>'. esc_html__( 'Order Summary', 'coschool' ) .'</h2>';
 	Helper::pri( $cart );
-	// do_action( 'coschool_enroll_cart' );
+	do_action( 'mcommerce_cart' );
 	// do_action( 'coschool_enroll_payment_form' );
 	
 	// echo '</div>';
