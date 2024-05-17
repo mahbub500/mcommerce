@@ -32,6 +32,9 @@ $procuts =  Helper::get_posts( [
         $permalink   	    = get_permalink( $id );
         $product_content    = $product_data->product->post_content ;
         $post_image         = get_the_post_thumbnail_url( $product_data->post ) ;
+        $product_quantity   = $product_data->get( 'mc_product_quantity' ) ;
+
+        if( $product_quantity == 0 ) continue;
             
         ?>
         <div class="col-md-6">   
@@ -41,7 +44,7 @@ $procuts =  Helper::get_posts( [
                     <h2 class="card-title"><a href="<?php esc_attr_e( $permalink ); ?>"><?php esc_html_e( $title ) ?></a></h2>
                     <p class="card-text">Details :  <?php echo wp_trim_words( $product_content, 3 ) ?> </p>
                     <p>Price : <?php echo $product_data->get( 'mc_product_price' ) ?> </p>
-                    <p>Quantity Remain : <?php echo $product_data->get( 'mc_product_quantity' ) ?> </p>
+                    <p>Quantity Remain : <?php echo  $product_quantity  ?> </p>
                     
                     <a href="<?php echo esc_url( $product_data->get( 'purchase_url' ) ) ?>" class="btn btn-primary">Add to cart</a>                  
                 </div>
