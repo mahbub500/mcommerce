@@ -13,8 +13,9 @@ $cart = mcommerce_get_cart_items();
                 <thead>
                     <tr>
                     <th scope="col">Product Name</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Queantity</th>
+                    <th scope="col">Remove Item</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,14 +25,19 @@ $cart = mcommerce_get_cart_items();
                     $product_title = $product_data->get( 'product_title' );
                     $product_price 	= $product_data->get( 'mc_product_price' ); 
 
-                    ?>
-                        
+                    ?>                        
                         <tr>
-                            <td><?php echo $product_title?></td>
-                            <td><?php echo $product_price ?></td>
+                            <td><?php echo $product_title?></td>                            
                             <td>1</td>
+                            <td><?php echo $product_price ?></td>
+                            <td><a href="<?php echo esc_url( add_query_arg( 'delist', $product_id ) )  ?>" >&#10005</a> </td>
                         </tr>
-                    <?php endforeach; ?>                      
+                    <?php endforeach; ?> 
+                    <tr>
+                        <td></td>                        
+                        <td>Total</td>
+                        <td></td>
+                    </tr>                     
                 </tbody>
             </table>
         </div>
