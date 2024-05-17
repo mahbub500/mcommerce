@@ -220,7 +220,7 @@ final class Plugin {
 		 * Template related hooks
 		 */
 		$template = new Template( $this->plugin );
-		$template->action( 'mcommerce_cart', 'cart' );
+		$template->action( 'plugins_loaded', 'load' );
 
 		
 

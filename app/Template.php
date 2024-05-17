@@ -38,10 +38,13 @@ class Template extends Base {
 
 	}
     
-    public function cart(  ){            
-
-       echo 'Cart';
+    public function load(  ){            
+        $this->action( 'mcommerce_cart', 'cart' );
     
+    }
+
+    public function cart(){
+       echo  Helper::get_view( 'cart', 'templates/cart' );
     }
 	
 }

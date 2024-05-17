@@ -4,7 +4,7 @@ use Mcommerce\Include\App\Product\Data;
 global $post;
     $product_id = $post->ID;
 
-    $product_data 	= new Data( $post->ID );
+    $product_data 	= new Data( $product_id );
     $product_price 	= $product_data->get( 'mc_product_price' );
     $product_quantity	= $product_data->get( 'mc_product_quantity' );
 
