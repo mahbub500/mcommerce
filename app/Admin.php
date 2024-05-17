@@ -37,7 +37,7 @@ class Admin extends Base {
 		$this->plugin	= $plugin;
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
-		$this->version	= $this->plugin['Version'];
+		$this->version	= time();
 		$this->admin_css= $this->plugin['assets'] . '/css';
 		$this->admin_js = $this->plugin['assets'] . '/js';
 		$this->database = new DB();
@@ -60,6 +60,7 @@ class Admin extends Base {
 		wp_enqueue_script( $this->slug. '-admin', "{$this->admin_js}/admin{$min}.js", [ 'jquery' ], $this->version, true );
 
 		wp_enqueue_script( 'boostrap-js', "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js", [ 'jquery' ], $this->version, true );
+		wp_enqueue_script( 'sweetalert2', "https://cdn.jsdelivr.net/npm/sweetalert2@11", '', $this->version, true );
 
 		wp_enqueue_script( 'boostrap-bundle-js', "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js", [ 'jquery' ], $this->version, true );
 
@@ -67,8 +68,21 @@ class Admin extends Base {
 			'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
 			'_wpnonce'		=> wp_create_nonce( $this->slug ),
 			
-		];
+		];	
 		
-		wp_localize_script( $this->slug, 'ADMIN_COMCOMMERCE', apply_filters( "{$this->slug}-localized", $localized ) );
+		wp_localize_script( $this->slug. '-admin', 'MCOMMERCE', apply_filters( "{$this->slug}-localized", $localized ) );
+
+	}
+
+	public function modal(){
+		?>
+		<div id="admin-mcommerce-modal" style="display: none">
+			<button class="btn btn-primary" type="button" disabled>
+			<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+			Loading...
+			</button>
+		</div>
+		
+		<?php
 	}
 }

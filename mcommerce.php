@@ -21,6 +21,7 @@ use Mcommerce\App\App;
 use Mcommerce\App\Settings;
 use Mcommerce\App\Common;
 use Mcommerce\App\Shortcode;
+use Mcommerce\App\Ajax;
 
 use Mcommerce\Include;
 /**
@@ -167,35 +168,16 @@ final class Plugin {
  			// $admin->action( 'admin_notices', 'admin_notices' );
  			// $admin->action( 'cx-plugin_after-nav-items', 'setting_navs_add_item' );
  			// $admin->filter( 'admin_body_class', 'admin_body_class' );
- 			// $admin->filter( 'admin_footer', 'admin_notice' );
+ 			$admin->action( 'admin_footer', 'modal' );
 
 			/**
 			 * Settings related hooks
 			 */
 			$settings = new Settings( $this->plugin );			
-			$settings->action( 'admin_menu', 'sub_menu' );
+			$settings->action( 'init', 'sub_menu' );
 			// $settings->action( 'cx-settings-saved', 'reset',10, 2 );
 			// $settings->action( "{$this->plugin['TextDomain']}_upgraded", 'migrate_settings', 10, 2 );
-
-			/**
-			 * Renders different notices
-			 * 
-			 * @package Codexpert\Plugin
-			 * 
-			 * @author Codexpert <hi@codexpert.io>
-			 */
-			// $notice = new Notice( $this->plugin );
-
-			/**
-			 * Shows a popup window asking why a user is deactivating the plugin
-			 * 
-			 * @package Pluggable\Marketing
-			 * 
-			 * @version 3.12
-			 *
-			 * @author Codexpert <hi@codexpert.io>
-			 */
-			// $deactivator = new Deactivator( CODESIGNER );
+			
 		
 
 		else : // ! is_admin() ?
@@ -232,33 +214,15 @@ final class Plugin {
 		$common = new Common( $this->plugin );
 		// $common->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
-		// /**
-		//  * The setup wizard
-		//  */
-		// $wizard = new App\Wizard( $this->plugin );
-		// $wizard->action( 'admin_print_styles', 'enqueue_styles' );
-		// $wizard->action( 'admin_print_scripts', 'enqueue_scripts' );
-		// $wizard->action( 'plugins_loaded', 'render' );
-		// $wizard->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
-
-		/**
-		 * Cron facing hooks
-		 */
-		// $cron = new App\Cron( $this->plugin );
-		// $cron->activate( 'install' );
-		// $cron->deactivate( 'uninstall' );
+		
 
 		/**
 		 * AJAX related hooks
 		 */
-		// $ajax = new App\AJAX( $this->plugin );
-		// $ajax->priv( 'codesigner-docs_json', 'fetch_docs' );
+		$ajax = new Ajax( $this->plugin );
+		$ajax->all( 'save-page-id', 'save_page_id' );
 		
 	}
-
-	
-
-
 
     /**
 	 * Cloning is forbidden.

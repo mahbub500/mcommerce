@@ -103,7 +103,9 @@ class Post_Type  {
 		    break;
 
 			case 'desc' :
-		        echo false === ( $product_content   = $product_data->product->post_content  ) ? esc_html__( '', 'mcommerce' ) : $product_content   = $product_data->product->post_content;
+				
+				$product_content   = wp_trim_words( $product_data->product->post_content, 3 );
+		        echo false === ( $product_content ) ? esc_html__( '', 'mcommerce' ) : $product_content ;
 		    break;
 			
 			case 'quantity' :

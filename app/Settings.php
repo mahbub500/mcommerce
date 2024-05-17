@@ -40,12 +40,11 @@ class Settings extends Base {
 
 	public function sub_menu() {
 		// add_submenu_page( 'product', __( 'Settings', 'mcommerce' ), __( 'Settings', 'coschool' ), 'manage_options', 'settings', [ $this, 'callback_reports' ] );
-		add_submenu_page( 'product', __( 'Payments', 'coschool' ), __( 'Payments', 'coschool' ), 'manage_options', 'payments', [ $this, 'callback_reports' ] );
+		add_submenu_page( 'edit.php?post_type=product', __( 'Settings', 'coschool' ), __( 'Settings', 'coschool' ), 'manage_options', 'settings', [ $this, 'callback_settings' ] );
 	}
 
-    public function callback_reports() {
-        // echo Helper::get_view( 'payments', 'views/adminmenu' );
-		echo 'Hello';
+    public function callback_settings() {
+        echo Helper::get_view( 'settings', 'views/adminmenu' );
     }
 
     

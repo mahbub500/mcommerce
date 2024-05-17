@@ -39,7 +39,7 @@ $procuts =  Helper::get_posts( [
                 <img class="card-img-top img-thumbnail rounded" style=" height: 300px; " src=" <?php echo $post_image ?> " alt="Product Image image">
                 <div class="card-body">
                     <h2 class="card-title"><a href="<?php esc_attr_e( $permalink ); ?>"><?php esc_html_e( $title ) ?></a></h2>
-                    <p class="card-text">Details :  <?php echo $product_content ?> </p>
+                    <p class="card-text">Details :  <?php echo wp_trim_words( $product_content, 3 ) ?> </p>
                     <p>Price : <?php echo $product_data->get( 'mc_product_price' ) ?> </p>
                     <p>Quantity Remain : <?php echo $product_data->get( 'mc_product_quantity' ) ?> </p>
                     
