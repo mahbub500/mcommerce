@@ -1,6 +1,7 @@
 <?php
 
 use Mcommerce\Helper;
+use Mcommerce\Include\App\Payment\Cart;
 if( ! function_exists( 'get_plugin_data' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
@@ -86,5 +87,19 @@ if( ! function_exists( 'mcommerce_cart_page' ) ) :
 		}
 
 		return $cart_page_id;
+	}
+endif;
+
+/**
+ * Cart Item
+ * 
+ * @param bool $url Either we need the URL or the page ID
+ * 
+ * @return string|int
+ */
+if( ! function_exists( 'mcommerce_get_cart_items' ) ) :
+	function mcommerce_get_cart_items() {
+		$cart = new Cart;
+		return $cart->get_contents();
 	}
 endif;
