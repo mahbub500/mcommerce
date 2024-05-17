@@ -4,6 +4,7 @@ namespace Mcommerce\Include\App\Payment;
 use Mcommerce\Helper;
 use Mcommerce\Abstracts\DB;
 use Mcommerce\Abstracts\Post_Data;
+use Mcommerce\Include\App\Product\Data ;
 
 /**
  * if accessed directly, exit.
@@ -116,4 +117,23 @@ class Cart {
 
         return false;
     }
+    /**
+     * Get Cart Total
+     * 
+     * @return [int] An array of IDs
+     */
+    public function get_total() {
+        $total_price = [];
+        $cart_total = $this->get_contents();
+
+        foreach ( $cart_total as $product_id  ) {
+            $product_data 	    = new Data( $product_id );
+            $product_title     = $product_data->get( 'product_title' );
+            $total_price[]      =  $product_data->get( 'mc_product_price' );
+        }
+        
+        return array_sum( $total_price );
+    }
+
+
 }

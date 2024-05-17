@@ -1,7 +1,15 @@
 <?php 
 use Mcommerce\Helper;
 
-if( false === ( $cart = mcommerce_get_cart_items() ) || count( $cart ) <= 0 ) {
+use Mcommerce\Include\App\Payment\Cart;
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+$cart = new Cart;
+
+if( false === ( $cart = $cart->get_contents() ) || count( $cart ) <= 0 ) {
 	_e( 'Your cart is empty!', 'mcommerce' );
 }
 else {
@@ -9,9 +17,7 @@ else {
 	// echo '<div class="coschool-payment-wrapper">';
 	echo '<h2>'. esc_html__( 'Order Summary', 'coschool' ) .'</h2>';
 	do_action( 'mcommerce_cart' );
-	// do_action( 'coschool_enroll_payment_form' );
+	do_action( 'mcommerce_payment_form' );
 	
-	// echo '</div>';
-    echo '<div > Hello</div>';
 }
 ?>

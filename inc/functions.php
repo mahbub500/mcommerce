@@ -105,16 +105,16 @@ endif;
 
 
 
-/**
- * Cart Item
- * 
- * @param bool $url Either we need the URL or the page ID
- * 
- * @return string|int
- */
-if( ! function_exists( 'mcommerce_get_cart_items' ) ) :
-	function mcommerce_get_cart_items() {
-		$cart = new Cart;
-		return $cart->get_contents();
-	}
-endif;
+// /**
+//  * Cart Item
+//  * 
+//  * @param bool $url Either we need the URL or the page ID
+//  * 
+//  * @return string|int
+//  */
+// if( ! function_exists( 'mcommerce_get_cart_items' ) ) :
+// 	function mcommerce_get_cart_items() {
+// 		$cart = new Cart;
+// 		return $cart->get_contents();
+// 	}
+// endif;

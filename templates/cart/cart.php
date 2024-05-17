@@ -1,11 +1,17 @@
 <?php
 use Mcommerce\Include\App\Product\Data;
+use Mcommerce\Helper;
+use Mcommerce\Include\App\Payment\Cart;
 
-$cart = mcommerce_get_cart_items();
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
+$cart           = new Cart;
+$cart_item      = $cart->get_contents();
+$cart_total     = $cart->get_total();
 
 ?>
-
 <div class="contaner">
     <div class="row">
         <div class="col-md-8">
@@ -15,15 +21,15 @@ $cart = mcommerce_get_cart_items();
                     <th scope="col">Product Name</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Remove Item</th>
+                    <th scope="col">Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ( $cart as $product_id ) : 
+                    <?php foreach ( $cart_item as $product_id ) : 
                        
                     $product_data 	= new Data( $product_id );
-                    $product_title = $product_data->get( 'product_title' );
-                    $product_price 	= $product_data->get( 'mc_product_price' ); 
+                    $product_title  = $product_data->get( 'product_title' );
+                    $product_price 	= $product_data->get( 'mc_product_price' );                     
 
                     ?>                        
                         <tr>
@@ -36,6 +42,7 @@ $cart = mcommerce_get_cart_items();
                     <tr>
                         <td></td>                        
                         <td>Total</td>
+                        <td> <?php echo $cart_total  ?> </td>
                         <td></td>
                     </tr>                     
                 </tbody>

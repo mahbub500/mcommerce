@@ -55,7 +55,7 @@ class Post_Type  {
 			'query_var'				=> true,
 			'can_export'			=> true,
 			'capability_type'		=> 'post',
-			'rewrite'             => array( 'slug' => 'product', 'with_front' => true ),
+			'rewrite'             	=> array( 'slug' => 'product', 'with_front' => true ),
 			'supports'				=> array( 'title', 'editor', 'thumbnail', 'author' ),
 		);
 	
