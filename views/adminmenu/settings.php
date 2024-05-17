@@ -11,7 +11,8 @@ $args = [
 ];
 
 $pages = Helper::get_posts( $args );
-$cart_page_id = mcommerce_cart_page();
+$cart_page_id       = mcommerce_cart_page();
+$payment_method     = mcommerce_payment_page();
 
 // Helper::pri( $pages );
 ?>
@@ -27,6 +28,14 @@ $cart_page_id = mcommerce_cart_page();
                     <?php foreach ( $pages as $id => $page ) : ?>                        
                         <option <?= $cart_page_id == $id ? 'selected' : '' ?> value="<?= $id ?>"><?= $page ?></option>
                     <?php endforeach; ?>
+                </select>
+                </div>
+                <div class="form-group col-md-4">
+                <label for="mc_payment">Payment System </label>
+                <select id="mc_payment" class="form-control">
+                    <option selected value="0">Choose Select Your payment method</option>                                          
+                        <option <?= $payment_method == 1 ? 'selected' : '' ?>  value="1">Test Payment </option>                    
+                        <option  <?= $payment_method == 2 ? 'selected' : '' ?> value="2">Stripe </option>                    
                 </select>
                 </div>        
             </div>

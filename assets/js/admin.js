@@ -10,9 +10,15 @@ jQuery(function ($) {
     $('.mc-submit').click(function (e) {
         e.preventDefault();
         var page_id = $('#mc_page').val();
+        var payment = $('#mc_payment').val();
 
         if ( page_id == 0 ) {
             alert( 'Please select a page.' );
+            return;
+        };
+        
+        if ( payment == 0 ) {
+            alert( 'Choose Select Your payment method' );
             return;
         };
         mcommerce_modal();
@@ -24,6 +30,7 @@ jQuery(function ($) {
             data: { 
                 action: "save-page-id", // The action name
                 page_id: page_id,
+                payment: payment,
                 _wpnonce: MCOMMERCE._wpnonce 
             },
             dataType: 'json',

@@ -70,7 +70,7 @@ endif;
 endif;
 
 /**
- * Cart page
+ * Cart page Link
  * 
  * @param bool $url Either we need the URL or the page ID
  * 
@@ -78,9 +78,7 @@ endif;
  */
 if( ! function_exists( 'mcommerce_cart_page' ) ) :
 	function mcommerce_cart_page( $url = false ) {
-		// $enroll = Helper::get_option( 'mcommerce_general', 'cart_page' );
 		$cart_page_id = get_option( 'mcommerce_page_id' );
-		// $enroll = 'http://localhost:10018/enroll-page/';
 
 		if( $url ) {
 			return get_permalink( $cart_page_id );
@@ -89,6 +87,23 @@ if( ! function_exists( 'mcommerce_cart_page' ) ) :
 		return $cart_page_id;
 	}
 endif;
+
+/**
+ * Cart page
+ * 
+ * @param bool $url Either we need the URL or the page ID
+ * 
+ * @return string|int
+ */
+if( ! function_exists( 'mcommerce_payment_page' ) ) :
+	function mcommerce_payment_page() {
+		$payment_method = get_option( 'mcommerce_payment_id' );
+
+		return $payment_method;
+	}
+endif;
+
+
 
 /**
  * Cart Item
