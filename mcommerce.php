@@ -153,33 +153,14 @@ final class Plugin {
 			 */
 			$admin = new Admin( $this->plugin );
 			$admin->activate( 'install' );
-			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-			// $admin->action( 'admin_footer', 'upgrade' );
-			// $admin->action( 'admin_footer', 'modal' );
-			// $admin->action( 'plugins_loaded', 'i18n' );
-			// $admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-			// $admin->action( 'admin_menu', 'add_menus' );
-			// $admin->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
-			// $admin->filter( 'plugin_row_meta', 'plugin_row_meta', 10, 2 );
-			// $admin->action( 'admin_footer_text', 'footer_text' );			
-			// $admin->action( 'after_setup_theme', 'setup' );
-			// $admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
- 			// $admin->action( 'plugins_loaded', 'settings_page_redirect' );			
- 			// $admin->filter( 'http_request_host_is_external', '__return_true', 10, 3 );
- 			// $admin->action( 'admin_notices', 'admin_notices' );
- 			// $admin->action( 'cx-plugin_after-nav-items', 'setting_navs_add_item' );
- 			// $admin->filter( 'admin_body_class', 'admin_body_class' );
+			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );			
  			$admin->action( 'admin_footer', 'modal' );
 
 			/**
 			 * Settings related hooks
 			 */
 			$settings = new Settings( $this->plugin );			
-			$settings->action( 'init', 'sub_menu' );
-			// $settings->action( 'cx-settings-saved', 'reset',10, 2 );
-			// $settings->action( "{$this->plugin['TextDomain']}_upgraded", 'migrate_settings', 10, 2 );
-			
-		
+			$settings->action( 'init', 'sub_menu' );	
 
 		else : // ! is_admin() ?
 
@@ -195,9 +176,7 @@ final class Plugin {
 			 */
 			$shortcode = new Shortcode( $this->plugin );
 			$shortcode->register( 'mcommerce_products', 'products' );
-			$shortcode->register( 'mcommerce_cart', 'cart' );
-			
-		
+			$shortcode->register( 'mcommerce_cart', 'cart' );	
 
 		endif;
 

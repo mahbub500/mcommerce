@@ -96,7 +96,7 @@ class Stripe extends Payment_Method {
 				var elements = stripe.elements();
 
 				var card = elements.create( 'card', { hidePostalCode: true, style: {} } );
-				card.mount('.mc_srtipe');
+				card.mount('.mc_card');
 				$(document).on( 'click', '.mcommerce-payment-button-stripe', function (e) {
 					e.preventDefault();
                     stripe.createToken(card).then(function(result) {
@@ -105,9 +105,8 @@ class Stripe extends Payment_Method {
 						}
 						else {
 							console.log(result);
-							$('#coschool-stripe-token').val(result.token.id);
+							$('#mcommerce-stripe-token').val(result.token.id);
 							$('#mcommerce-payment-form').submit();
-							$('#coschool-modal').show();
 						}
 					});
 				});

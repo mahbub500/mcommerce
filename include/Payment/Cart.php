@@ -67,6 +67,10 @@ class Cart {
             
             wp_safe_redirect( get_permalink( $cart_page_id ) );
             exit();
+        }
+        
+        if( isset( $_POST['mcommerce-cart'] ) ) {
+            
         }      
         
     }
