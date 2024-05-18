@@ -40,10 +40,6 @@ class Payment {
 
 		add_action( 'init', [ new Stripe, 'redirect' ] );
 		add_action( 'wp_footer', [ new Stripe, 'enqueue_scripts' ] );
-		
-		// add_action( 'coschool_payment_form_paypal', [ new Stripe, 'payment_form' ] );
-		// add_filter( 'coschool_paypal_payment_id', [ new Stripe, 'payment_id' ], 10, 2 );
-		// add_filter( 'coschool_payment_paypal_config', [ new Stripe, 'settings' ] );
 	}
 
     

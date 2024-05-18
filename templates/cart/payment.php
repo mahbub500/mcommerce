@@ -3,6 +3,9 @@ echo "Payment";
 
 $payment_method = mcommerce_payment_method();
 
+$user_id = get_current_user_id();
+$user_info = get_userdata( $user_id );
+
 ?>
 <div class="contaner">
     <div class="row">
@@ -28,11 +31,11 @@ $payment_method = mcommerce_payment_method();
                 <div class='mc_srtipe' >
                     <div class="form-group " >
                         <label for="mc_user_name">User Name</label>
-                        <input type="email" class="form-control" id="mc_user_name" >                        
+                        <input readonly type="text" value="<?php echo $user_info->user_login;?>" class="form-control" id="mc_user_name" >                        
                     </div> 
                     <div class="form-group " >
                         <label for="mc_user_email">Email address</label>
-                        <input type="email" class="form-control" id="mc_user_email" >                        
+                        <input readonly type="email" value="<?php echo $user_info->user_email;?>" class="form-control" id="mc_user_email" >                        
                     </div>
                     <div class="mc_card">
 
