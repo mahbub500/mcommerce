@@ -36,7 +36,7 @@ class Front extends Base {
 		$this->plugin	= $plugin;
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
-		$this->version	= $this->plugin['Version'];
+		$this->version	= time();
 		$this->assets 	= MCOMMERCE_ASSETS;
 
 	}

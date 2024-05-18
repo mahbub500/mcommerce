@@ -95,8 +95,8 @@ endif;
  * 
  * @return string|int
  */
-if( ! function_exists( 'mcommerce_payment_page' ) ) :
-	function mcommerce_payment_page() {
+if( ! function_exists( 'mcommerce_payment_method' ) ) :
+	function mcommerce_payment_method() {
 		$payment_method = get_option( 'mcommerce_payment_id' );
 
 		return $payment_method;
@@ -105,16 +105,4 @@ endif;
 
 
 
-// /**
-//  * Cart Item
-//  * 
-//  * @param bool $url Either we need the URL or the page ID
-//  * 
-//  * @return string|int
-//  */
-// if( ! function_exists( 'mcommerce_get_cart_items' ) ) :
-// 	function mcommerce_get_cart_items() {
-// 		$cart = new Cart;
-// 		return $cart->get_contents();
-// 	}
-// endif;
+

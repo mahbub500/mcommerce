@@ -12,7 +12,7 @@ $args = [
 
 $pages = Helper::get_posts( $args );
 $cart_page_id       = mcommerce_cart_page();
-$payment_method     = mcommerce_payment_page();
+$payment_method     = mcommerce_payment_method();
 
 // Helper::pri( $pages );
 ?>
@@ -20,7 +20,9 @@ $payment_method     = mcommerce_payment_page();
     <div class="row">
         <div class="col-md-8 mt-5">
         <form >  
-            <div class="form-row">            
+        <h1>Basic Settings</h1>
+            <div class="form-row"> 
+                           
                 <div class="form-group col-md-4">
                 <label for="mc_page">Add Cart Page </label>
                 <select id="mc_page" class="form-control">
@@ -38,6 +40,26 @@ $payment_method     = mcommerce_payment_page();
                         <option  <?= $payment_method == 2 ? 'selected' : '' ?> value="2">Stripe </option>                    
                 </select>
                 </div>        
+            </div>
+            <div class="mc_srtipe" style="display:none">
+                <h4>Stripe Settings</h4>
+           
+                <div class="form-row " > 
+                
+                    <div class="form-group col-md-4">
+                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">                    
+                    </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">                    
+                    </div>
+                    </div>        
+                </div>
             </div>
         <button class="btn btn-primary mc-submit">Save Settings</button>
         </form>

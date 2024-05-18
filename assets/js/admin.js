@@ -48,5 +48,21 @@ jQuery(function ($) {
 
         mcommerce_modal(false);
     });
+
+
+    $('#mc_payment').on('change', function(e){
+        if( $(this).val() == 1) {
+            $('.mc_srtipe').hide();
+        }
+        if( $(this).val() == 2) { 
+            $('.mc_srtipe').show();
+        } 
+    });
+    if( $('#mc_payment').val() == 2) {
+        $('.mc_srtipe').show();
+    }
 });
+
+
+
 
