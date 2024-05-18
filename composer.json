@@ -15,5 +15,8 @@
             "Mcommerce\\Include\\App\\Payment\\" : "Include/Payment"
         },
         "files": []
+    },
+    "require": {
+        "stripe/stripe-php": "^14.7"
     }
 }

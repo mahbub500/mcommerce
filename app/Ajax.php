@@ -46,6 +46,9 @@ class Ajax extends Base {
 
         update_option( 'mcommerce_page_id', $_POST['page_id'] );
         update_option( 'mcommerce_payment_id', $_POST['payment'] );
+        update_option( 'stripe_publishable_key', $_POST['publishable'] );
+		update_option( 'stripe_secret_key', $_POST['secret'] );	
+		
 
         $response['status']		= 1;
         $response['message'] 	= __( 'Page Updated!', 'mcommerce' );

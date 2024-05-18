@@ -103,6 +103,24 @@ if( ! function_exists( 'mcommerce_payment_method' ) ) :
 	}
 endif;
 
+/**
+ * Is test mode enabled?
+ * 
+ * @since 0.9
+ * 
+ * @return bool
+ */
+if( ! function_exists( 'mcommerce_test_mode' ) ) :
+	function mcommerce_test_mode() {
+		$test_mode 	= mcommerce_payment_method();
+		if( $test_mode == '1' ) {
+			return $test_mode == 'on';
+		}
+
+		return false;
+	}
+endif;
+
 
 
 

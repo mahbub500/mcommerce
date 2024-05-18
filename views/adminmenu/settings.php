@@ -11,8 +11,10 @@ $args = [
 ];
 
 $pages = Helper::get_posts( $args );
-$cart_page_id       = mcommerce_cart_page();
-$payment_method     = mcommerce_payment_method();
+$cart_page_id   = mcommerce_cart_page();
+$payment_method = mcommerce_payment_method();
+$publishable_key = get_option( 'stripe_publishable_key' );
+$secret_key     = get_option( 'stripe_secret_key' );
 
 // Helper::pri( $pages );
 ?>
@@ -42,21 +44,19 @@ $payment_method     = mcommerce_payment_method();
                 </div>        
             </div>
             <div class="mc_srtipe" style="display:none">
-                <h4>Stripe Settings</h4>
-           
-                <div class="form-row " > 
-                
+                <h4>Stripe Settings</h4>           
+                <div class="form-row " >                 
                     <div class="form-group col-md-4">
                     
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">                    
+                        <label for="stripe_publishable_key">Publishable Key</label>
+                        <input type="email" class="form-control" value="<?= $publishable_key ?>" id="stripe_publishable_key" placeholder="Publishable Key">                    
                     </div>
                     </div>
                     <div class="form-group col-md-4">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">                    
+                        <label for="stripe_secret_key">Secret Key</label>
+                        <input type="email" class="form-control" value="<?= $secret_key ?>" id="stripe_secret_key" placeholder="Secret Key">                    
                     </div>
                     </div>        
                 </div>

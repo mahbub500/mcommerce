@@ -2,6 +2,7 @@
 echo "Payment";
 
 $payment_method = mcommerce_payment_method();
+
 ?>
 <div class="contaner">
     <div class="row">
@@ -11,7 +12,7 @@ $payment_method = mcommerce_payment_method();
             if( $payment_method == '1' ) {
                 ?>
                 <form action="" >
-                    
+
                 </form>
                 <button type="submit" class="btn btn-primary mt-2">Bye Now</button>
                 <?php
@@ -35,7 +36,7 @@ $payment_method = mcommerce_payment_method();
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
                 </div>    
-                <button type="submit" class="btn btn-primary mt-2">Bye Now</button>
+                <button type="submit" class="btn btn-primary mt-2 mcommerce-payment-button-stripe">Bye Now</button>
             </form>
             <?php                                
             }

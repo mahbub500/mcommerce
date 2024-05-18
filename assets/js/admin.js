@@ -11,6 +11,8 @@ jQuery(function ($) {
         e.preventDefault();
         var page_id = $('#mc_page').val();
         var payment = $('#mc_payment').val();
+        var publishable = $('#stripe_publishable_key').val();
+        var secret = $('#stripe_secret_key').val();
 
         if ( page_id == 0 ) {
             alert( 'Please select a page.' );
@@ -31,6 +33,8 @@ jQuery(function ($) {
                 action: "save-page-id", // The action name
                 page_id: page_id,
                 payment: payment,
+                publishable: publishable,
+                secret: secret,
                 _wpnonce: MCOMMERCE._wpnonce 
             },
             dataType: 'json',
