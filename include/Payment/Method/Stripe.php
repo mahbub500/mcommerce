@@ -96,42 +96,23 @@ class Stripe extends Payment_Method {
 				var elements = stripe.elements();
 
 				var card = elements.create( 'card', { hidePostalCode: true, style: {} } );
-
-                console.log( elements );
-
 				card.mount('.mc_srtipe');
-
-				// $(card).change(function(event){
-				// 	if (event.error) {
-				// 		$('#coschool-errors').text(event.error.message);
-				// 	}
-				// 	else {
-				// 		$('#coschool-errors').text('');
-				// 	}
-				// });
-
 				$(document).on( 'click', '.mcommerce-payment-button-stripe', function (e) {
-					// if( $('[name=payment_method]:checked').val() != 'stripe' ) return;
-
-					e.preventDefault();					
-
-
-					stripe.createToken(card).then(function(result) {
+					e.preventDefault();
+                    stripe.createToken(card).then(function(result) {
 						if (result.error) {
-							$('#coschool-errors').text(result.error.message);
-							$('#coschool-modal').hide();
+                            console.log(result.error.message);							
 						}
 						else {
 							console.log(result);
 							$('#coschool-stripe-token').val(result.token.id);
-							$('#coschool-payment-form').submit();
+							$('#mcommerce-payment-form').submit();
 							$('#coschool-modal').show();
 						}
 					});
 				});
 			});
 		</script>
-		
 		<style type="text/css"> .StripeElement {background-color: white;padding: 10px 12px;border-radius: 4px;border: 1px solid transparent;box-shadow: 0 1px 3px 0 #e6ebf1;-webkit-transition: box-shadow 150ms ease;transition: box-shadow 150ms ease;} .StripeElement--focus {box-shadow: 0 1px 3px 0 #cfd7df;} .StripeElement--invalid {border-color: #fa755a;} .StripeElement--webkit-autofill {background-color: #fefde5 !important;}
 		<?php
 	}

@@ -20,7 +20,8 @@ $payment_method = mcommerce_payment_method();
                 
             }else{
                 ?>
-            <form >
+            <form id="mcommerce-payment-form" method="post" >
+            <input type="hidden" name="action" value="mcommerce-payment">
                 <div class='mc_srtipe' >
                     <div class="form-group " >
                         <label for="exampleInputEmail1">Email address</label>
