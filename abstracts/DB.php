@@ -59,7 +59,7 @@ class Db {
 		 */
 		$order_table = "CREATE TABLE `{$wpdb->prefix}{$this->prefix}order` (
 		    id int(11) NOT NULL AUTO_INCREMENT,		  
-		    trans_key varchar(11) NOT NULL,
+		    trans_key varchar(255) NOT NULL,
 		    order_by int(11) NOT NULL,
 		    total int(11) NOT NULL,
 		    UNIQUE KEY id (id)
