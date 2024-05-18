@@ -59,12 +59,9 @@ class Db {
 		 */
 		$order_table = "CREATE TABLE `{$wpdb->prefix}{$this->prefix}order` (
 		    id int(11) NOT NULL AUTO_INCREMENT,		  
-		    price int(11) NOT NULL,
-		    quantity int(11) NOT NULL,
-		    status varchar(255) NULL,
-		    order_by int(11) NOT NULL,
 		    trans_key varchar(11) NOT NULL,
-		    time int(10) NOT NULL,
+		    order_by int(11) NOT NULL,
+		    total int(11) NOT NULL,
 		    UNIQUE KEY id (id)
 		);";
 

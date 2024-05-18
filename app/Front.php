@@ -3,6 +3,7 @@ namespace Mcommerce\App;
 
 use Mcommerce\Base;
 use Mcommerce\Helper;
+use Mcommerce\Abstracts\DB;
 
 /**
  * if accessed directly, exit.
@@ -38,13 +39,11 @@ class Front extends Base {
 		$this->name		= $this->plugin['Name'];
 		$this->version	= time();
 		$this->assets 	= MCOMMERCE_ASSETS;
+		
 
 	}
 
-    public function head(){
-	// $parent_slug = plugin_basename( 'product' );
-        // Helper::pri( $parent_slug );
-    }
+    public function head(){   }
 
     /**
 	 * Enqueue JavaScripts and stylesheets

@@ -157,16 +157,26 @@ class Cart {
         $user_id = get_current_user_id(); 
 
         $stripe_token = $posted['stripeToken'];
-        $cart = $this->get_contents();
+        $order_total = $posted['order-total'];
+        $cart = $this->get_contents();        
 
-        update_option( 'stripe_token', $stripe_token );
-
-
-      
-        
+        global $wpdb;
+		$sql = $wpdb->insert( 'wp_mc_order',
+			 [
+				'trans_key' => $stripe_token,
+                'order_by'  => $user_id,
+                'total'     => $order_total,
+				
+			],
+			[
+				'%d',			
+				'%d',			
+				'%d',			
+			]
+		);
 
         /**
-         * Clear the cart and remove coupons
+         * Clear the cart
          */
         $this->clear_cart();
         
