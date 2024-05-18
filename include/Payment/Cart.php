@@ -156,7 +156,12 @@ class Cart {
         // create or log the user in
         $user_id = get_current_user_id(); 
 
-        
+        $stripe_token = $posted['stripeToken'];
+        $cart = $this->get_contents();
+
+        update_option( 'stripe_token', $stripe_token );
+
+
       
         
 

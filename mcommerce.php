@@ -170,6 +170,7 @@ final class Plugin {
 			$front = new Front( $this->plugin );
 			$front->action( 'wp_head', 'head' );
 			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+			$front->action( 'wp_footer', 'modal' );
 
 			/**
 			 * Short Code related hooks

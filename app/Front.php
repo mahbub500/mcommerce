@@ -70,4 +70,15 @@ class Front extends Base {
 		
 		wp_localize_script( $this->slug, 'MCOMMERCE', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
+	public function modal(){
+		?>
+		<div id="front-mcommerce-modal" style="display: none">
+			<button class="btn btn-primary" type="button" disabled>
+			<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+			Loading...
+			</button>
+		</div>
+		
+		<?php
+	}
 }

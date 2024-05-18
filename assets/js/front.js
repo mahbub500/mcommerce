@@ -1,3 +1,10 @@
+let mcommerce_modal = (show = true) => {
+    if (show) {
+        jQuery("#front-mcommerce-modal").show();
+    } else {
+        jQuery("#front-mcommerce-modal").hide();
+    }
+};
 jQuery(function ($) {
 
    $('#mc_front_payment').on('change', function(e){

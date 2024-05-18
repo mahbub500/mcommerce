@@ -27,7 +27,6 @@ $user_info = get_userdata( $user_id );
                 <?php wp_nonce_field();?>
                 <input type="hidden" id="mcommerce-stripe-token" name="stripeToken" />
                 <input type="hidden" name="mcommerce-cart" value="1">
-                <input type="hidden" name="action" value="mcommerce-payment">
                 <div class='mc_srtipe' >
                     <div class="form-group " >
                         <label for="mc_user_name">User Name</label>

@@ -90,6 +90,7 @@ class Stripe extends Payment_Method {
 				card.mount('.mc_card');
 				$(document).on( 'click', '.mcommerce-payment-button-stripe', function (e) {
 					e.preventDefault();
+					$('#front-mcommerce-modal').show();
                     stripe.createToken(card).then(function(result) {
 						if (result.error) {
                             console.log(result.error.message);							
@@ -97,6 +98,7 @@ class Stripe extends Payment_Method {
 						else {
 							console.log(result);
 							$('#mcommerce-stripe-token').val(result.token.id);
+							$('#front-mcommerce-modal').hide();
 							$('#mcommerce-payment-form').submit();
 						}
 					});
