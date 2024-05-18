@@ -71,16 +71,7 @@ class Stripe extends Payment_Method {
 
 		$this->method	= 'stripe';
 		$this->label	= __( 'Stripe', 'coschool' );
-
 		$this->is_test 	= mcommerce_test_mode();
-
-		$this->pay_url	= $this->is_test ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
-		$this->api_base	= $this->is_test ? 'https://api.sandbox.paypal.com/v1' : 'https://api.paypal.com/v1';
-		// $this->currency_code	= Helper::get_option( 'coschool_payment', 'currency' );
-		// $this->clientId			= Helper::get_option( 'coschool_payment', 'paypal_clientId' );
-		// $this->secret			= Helper::get_option( 'coschool_payment', 'paypal_secret' );
-		// $this->paypal_email		= Helper::get_option( 'coschool_payment', 'paypal_email' );
-
 		parent::__construct();
 	}
 

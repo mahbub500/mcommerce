@@ -70,7 +70,7 @@ class Cart {
         }
         
         if( isset( $_POST['mcommerce-cart'] ) ) {
-            
+            do_action( 'mcommerce-cart_form_submitted', $_POST );
         }      
         
     }
@@ -137,6 +137,39 @@ class Cart {
         }
         
         return array_sum( $total_price );
+    }
+
+    /**
+     * Clears the cart
+     */
+    public function clear_cart() {
+        setcookie( $this->cart_key , '', time() -1, COOKIEPATH, COOKIE_DOMAIN );
+    }   
+
+     /**
+     * Let's process the payment
+     * 
+     * @param array $posted The form data
+     */
+    public function process_cart( $posted ) {
+
+        // create or log the user in
+        $user_id = get_current_user_id(); 
+
+        
+      
+        
+
+        /**
+         * Clear the cart and remove coupons
+         */
+        $this->clear_cart();
+        
+        /**
+         * Rediret to somewhere
+         */
+        wp_safe_redirect( get_home_url() );
+        exit();
     }
 
 

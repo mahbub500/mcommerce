@@ -55,21 +55,20 @@ class Db {
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		/**
-		 * product table
+		 * order table
 		 */
-		$product_table = "CREATE TABLE `{$wpdb->prefix}{$this->prefix}product` (
-		    id int(11) NOT NULL AUTO_INCREMENT,
-		    name varchar(255) NOT NULL,
-		    description varchar(255) NOT NULL,
+		$order_table = "CREATE TABLE `{$wpdb->prefix}{$this->prefix}order` (
+		    id int(11) NOT NULL AUTO_INCREMENT,		  
 		    price int(11) NOT NULL,
 		    quantity int(11) NOT NULL,
-		    image varchar(255) NULL,
-		    created_by int(11) NOT NULL,
+		    status varchar(255) NULL,
+		    order_by int(11) NOT NULL,
+		    trans_key varchar(11) NOT NULL,
 		    time int(10) NOT NULL,
 		    UNIQUE KEY id (id)
 		);";
 
-		dbDelta( $product_table );
+		dbDelta( $order_table );
     }
 
 	
