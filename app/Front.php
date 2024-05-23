@@ -43,7 +43,7 @@ class Front extends Base {
 
 	}
 
-    public function head(){   }
+    public function head(){  }
 
     /**
 	 * Enqueue JavaScripts and stylesheets

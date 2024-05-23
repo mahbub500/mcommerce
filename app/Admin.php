@@ -45,6 +45,34 @@ class Admin extends Base {
 
 	public function install() {
 		$this->database->create_tables();
+		$short_code = [
+			[
+				'title' => 'Product',
+				'short_code' => '[mcommerce_products]'
+			],
+			[
+				'title' => 'Cart',
+				'short_code' => '[mcommerce_cart]'
+			],
+
+		];
+
+		foreach( $short_code as $code ){
+			
+				// Create post object
+				$new_page = array(
+					'post_title'   => $code['title'],
+					'post_content' => $code['short_code'],
+					'post_status'  => 'publish',
+					'post_type'    => 'page',
+				);
+		
+				// Insert the post into the database
+				$page_id = wp_insert_post($new_page);
+				
+			
+		}
+		
 	}
 
 	 /**
